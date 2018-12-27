@@ -1,0 +1,21 @@
+static public int primesCount(int n)
+    {
+        if(n<2)
+            return 0;
+        boolean[] prime = new boolean[n+1];
+        Arrays.fill(prime, true);
+        prime[0] = false; // mark 0 as non - prime number
+        prime[1] = false; // mark 1 ass non- prime number
+        // logic is any starting true marked boolean is prime 2 3 5 so on
+        int count = 0; // count the number of prime till n;
+        for(int i=2; i<=n; i++)
+        {
+            if(prime[i])
+            {
+                count++;
+                for(int j=2; j<=n/i; j++)
+                    prime[j*i] = false;
+            }
+        }
+        return count;
+    }
